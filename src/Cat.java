@@ -20,6 +20,10 @@ public class Cat {
 	private static final int MOUTH_X = HEAD_DIMENSION/5 * 2;
 	private static final int MOUTH_Y = HEAD_DIMENSION/5 * 3;
 	
+	// Eyebrow starts above the eye
+	private static final int EYEBROW_OFFSET_LEFT = 5;
+	private static final int EYEBROW_OFFSET_RIGHT = 0;
+	
 	// draw will render the Cat on the Graphics object
 	public void draw(Graphics g, int catX, int catY)
 	{	
@@ -42,10 +46,18 @@ public class Cat {
 		x = catX + MOUTH_X;
 		y = catY + MOUTH_Y;
 		g2.fillOval(x, y, MOUTH_WIDTH, MOUTH_HEIGHT);
-		g2.setColor(Color.black);
+		// Draw the eyebrows
+		g2.setColor(Color.GRAY);
+		x = catX + EYE_X; 
+		y = catY + EYE_Y;
+		g2.drawLine(x, y - EYEBROW_OFFSET_LEFT, x + EYE_WIDTH,y - EYEBROW_OFFSET_RIGHT);
+		x += EYE_SEPARATION;
+		g2.drawLine(x, y - EYEBROW_OFFSET_RIGHT, x + EYE_WIDTH,y - EYEBROW_OFFSET_LEFT);
+		
 		// Meow text appears below cat head, +10 places below 
 		// so it doesn't overlap the drawing
-		g2.drawString("Meow", catX, catY+HEAD_DIMENSION+10);
+		g2.setColor(Color.black);
+		g2.drawString("Meow!", catX, catY+HEAD_DIMENSION+10);
 		}	
 }
-}
+
