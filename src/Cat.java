@@ -24,6 +24,15 @@ public class Cat {
 	private static final int EYEBROW_OFFSET_LEFT = 5;
 	private static final int EYEBROW_OFFSET_RIGHT = 0;
 	
+	// Hat 
+	// pick hat height, width is based on head dimension
+        private static final int HAT_HEIGHT = 50;
+        private static final int HAT_WIDTH = HEAD_DIMENSION*1.5;
+        // hat starts above the head aligned with the center
+        private static final int HAT_X = HEAD_DIMENSION/2;
+        private static final int HAT_Y = HAT_HEIGHT;
+	
+
 	// draw will render the Cat on the Graphics object
 	public void draw(Graphics g, int catX, int catY)
 	{	
@@ -53,6 +62,12 @@ public class Cat {
 		g2.drawLine(x, y - EYEBROW_OFFSET_LEFT, x + EYE_WIDTH,y - EYEBROW_OFFSET_RIGHT);
 		x += EYE_SEPARATION;
 		g2.drawLine(x, y - EYEBROW_OFFSET_RIGHT, x + EYE_WIDTH,y - EYEBROW_OFFSET_LEFT);
+		
+		// Draw the hat
+		g2.setColor(Color.black);
+		x = catX + HAT_X;
+		y = catY + HAT_Y;
+		g2.fillOval(x,y, HAT_WIDTH, HAT_HEIGHT);
 		
 		// Meow text appears below cat head, +10 places below 
 		// so it doesn't overlap the drawing
