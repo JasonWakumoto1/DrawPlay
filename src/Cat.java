@@ -26,11 +26,11 @@ public class Cat {
 	
 	// Hat 
 	// pick hat height, width is based on head dimension
-        private static final int HAT_HEIGHT = 50;
-        private static final int HAT_WIDTH = HEAD_DIMENSION*1.5;
-        // hat starts above the head aligned with the center
-        private static final int HAT_X = HEAD_DIMENSION/2;
-        private static final int HAT_Y = HAT_HEIGHT;
+    private static final int HAT_HEIGHT = 20;
+    private static final int HAT_WIDTH = (int) Math.round(HEAD_DIMENSION*0.8);
+    // hat starts above the head aligned with the center
+    private static final int HAT_X = -HAT_WIDTH/2 + HEAD_DIMENSION/2;
+    private static final int HAT_Y = 0;
 	
 
 	// draw will render the Cat on the Graphics object
