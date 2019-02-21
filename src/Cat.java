@@ -44,6 +44,8 @@ public class Cat {
 	public void draw(Graphics g, int catX, int catY)
 	{	
 		Graphics2D g2 = (Graphics2D) g;
+		
+		
 		int x=catX;
 		int y=catY;
 		// Clear the last animimation
