@@ -2,6 +2,10 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.geom.*;
 
+/**
+ * @author Jason Wakumoto, Zachary Smeton
+ *
+ */
 public class Cat {
 	// drawing constants are private - noone needs to know what we're doing
 	// pick a head dimension
@@ -31,6 +35,9 @@ public class Cat {
     // hat starts above the head aligned with the center
     private static final int HAT_X = -HAT_WIDTH/2 + HEAD_DIMENSION/2;
     private static final int HAT_Y = 0;
+    // gat starts in the bottom right hand corner of the head
+    private static final int GAT_WIDTH = 30;
+    private static final int GAT_HEIGHT = 30;
 	
 
 	// draw will render the Cat on the Graphics object
@@ -69,10 +76,47 @@ public class Cat {
 		y = catY + HAT_Y;
 		g2.fillOval(x,y, HAT_WIDTH, HAT_HEIGHT);
 		
+		// Draw the gat (starting with the body)
+		x = (int) catX + HEAD_DIMENSION/2 + HEAD_DIMENSION/4;
+		y = (int) catY + HEAD_DIMENSION/2 + HEAD_DIMENSION/4;
+		g2.fillRect(x, y, GAT_WIDTH, GAT_HEIGHT);
+		
+		// Draw Left aiming implement
+		x = (int) catX + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_WIDTH/4;
+		y = (int) catY + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 - GAT_HEIGHT/4;
+		g2.fillRect(x, y, GAT_WIDTH/8, GAT_HEIGHT);
+		
+		// Draw Right aiming implement
+		x = (int) catX + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_WIDTH/4 + GAT_WIDTH/2; //
+		y = (int) catY + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 - GAT_HEIGHT/4;
+		g2.fillRect(x, y, GAT_WIDTH/8, GAT_HEIGHT);
+		
+		// Draw Handle
+		g2.setColor(Color.DARK_GRAY);
+		x = (int) catX + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_WIDTH/4;
+		y = (int) catY + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_HEIGHT;
+		g2.fillRect(x, y, GAT_WIDTH / 2, GAT_HEIGHT);
+		
+		// Draw Magazine
+		g2.setColor(Color.GRAY);
+		x = (int) catX + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_WIDTH/4 + GAT_WIDTH/8 + GAT_WIDTH/16;
+		y = (int) catY + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_HEIGHT + GAT_HEIGHT;
+		g2.fillRect(x, y, GAT_WIDTH / 4, GAT_HEIGHT);
+		
+		// Draw Barrel
+		g2.setColor(Color.yellow); 
+		x = (int) catX + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_WIDTH/4;
+		y = (int) catY + HEAD_DIMENSION/2 + HEAD_DIMENSION/4 + GAT_HEIGHT/4;
+		g2.fillOval(x, y, GAT_WIDTH / 2, GAT_HEIGHT / 2); 
+		
+		
+		
 		// Meow text appears below cat head, +10 places below 
 		// so it doesn't overlap the drawing
 		g2.setColor(Color.black);
-		g2.drawString("Meow!", catX, catY+HEAD_DIMENSION+10);
+		g2.drawString("Meow!", catX + HEAD_DIMENSION, catY+10);
+		g2.setColor(Color.RED);
+		g2.drawString("Translation: Hand over the cash!", catX + HEAD_DIMENSION, catY+(10 * 3));
 		}	
 }
 
